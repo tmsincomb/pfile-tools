@@ -523,7 +523,9 @@ class R20_007PfileHeader(LittleEndianStructure):
         ('pad_0', c_char * 12),
         ('scan_date_str', c_char * 10),
         ('scan_time_str', c_char * 8),
-        ('pad_1', c_char * 30),
+        ('pad_0p', c_char * 14),
+        ('dacq_ctrl', c_short),         # phase encoding gradient polarity
+        ('pad_1', c_char * 14),
         ('pass_count', c_short),
         ('pad_2', c_char * 2),
         ('slice_count', c_ushort),
@@ -596,7 +598,9 @@ class R20_007PfileHeader(LittleEndianStructure):
         ('data_size', c_ulong),
         ('ssp_save', c_ulong),
         ('uda_save', c_ulong),
-        ('pad_10', c_char * 139656),
+        ('pad_9p', c_char * 980),
+        ('num_difdirs', c_short),       # number of diffusion directions
+        ('pad_10', c_char * 138674),
         ('aps_r1', c_int),
         ('aps_r2', c_int),
         ('aps_tg', c_int),
@@ -724,7 +728,9 @@ class R20_007PfileHeader(LittleEndianStructure):
         ('tr', c_int),
         ('ti', c_int),
         ('te', c_int),
-        ('pad_34', c_char * 432),
+        ('pad_33p', c_char * 374),
+        ('num_slices', c_short),        # number of slices per TR
+        ('pad_34', c_char * 56),
         ('frequency_direction', c_short),
         ('pad_35', c_char * 130),
         ('psd_name', c_char * 33),
@@ -744,7 +750,9 @@ class R26_002PfileHeader(LittleEndianStructure):
         ('pad_0', c_char * 88),
         ('scan_date_str', c_char * 10),
         ('scan_time_str', c_char * 8),
-        ('pad_1', c_char * 30),
+        ('pad_0p', c_char * 14),
+        ('dacq_ctrl', c_short),         # phase encoding gradient polarity
+        ('pad_1', c_char * 14),
         ('pass_count', c_short),
         ('pad_2', c_char * 2),
         ('slice_count', c_ushort),
@@ -760,7 +768,7 @@ class R26_002PfileHeader(LittleEndianStructure):
         ('recon_y_res', c_short),
         ('image_size', c_short),
         ('recon_z_res', c_int),
-        ('pad_6', c_char * 100),
+        ('pad_6', c_char * 88),         # 100
         ('rh_user_0', c_float),
         ('rh_user_1', c_float),
         ('rh_user_2', c_float),
@@ -781,7 +789,7 @@ class R26_002PfileHeader(LittleEndianStructure):
         ('rh_user_17', c_float),
         ('rh_user_18', c_float),
         ('rh_user_19', c_float),
-        ('pad_7', c_char * 704),
+        ('pad_7', c_char * 576),        # 704
         ('rh_user_20', c_float),
         ('rh_user_21', c_float),
         ('rh_user_22', c_float),
@@ -811,14 +819,15 @@ class R26_002PfileHeader(LittleEndianStructure):
         ('rh_user_46', c_float),
         ('rh_user_47', c_float),
         ('rh_user_48', c_float),
-        ('pad_8', c_char * 528),
+        ('pad_8', c_char * 480),        # 528
         ('bandwidth', c_float),
-        ('pad_9', c_char * 12),
+        ('pad_9', c_char * 4),          # 12
         ('data_size', c_ulong),
         ('ssp_save', c_ulong),
         ('uda_save', c_ulong),
-        # Note: 50764 offset added for r26.002; it might belong somewhere else
-        ('pad_10', c_char * (139656 + 50764)),
+        ('pad_9p', c_char * 36),
+        ('num_difdirs', c_short),       # number of diffusion directions
+        ('pad_10', c_char * 188890),    # (139618 + 50764)
         ('aps_r1', c_int),
         ('aps_r2', c_int),
         ('aps_tg', c_int),
@@ -830,7 +839,7 @@ class R26_002PfileHeader(LittleEndianStructure):
         ('y_shim', c_short),
         ('z_shim', c_short),
         ('recon_enabled', c_short),
-        ('pad_12', c_char * 1744),
+        ('pad_12', c_char * 3432),      # 1744
         ('magnet_strength', c_int),
         ('patient_weight_g', c_int),
         ('exam_timestamp', c_int),
@@ -946,7 +955,9 @@ class R26_002PfileHeader(LittleEndianStructure):
         ('tr', c_int),
         ('ti', c_int),
         ('te', c_int),
-        ('pad_34', c_char * 432),
+        ('pad_33p', c_char * 374),
+        ('num_slices', c_short),        # number of slices per TR
+        ('pad_34', c_char * 56),
         ('frequency_direction', c_short),
         ('pad_35', c_char * 130),
         ('psd_name', c_char * 33),
