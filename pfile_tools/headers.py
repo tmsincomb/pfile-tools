@@ -875,9 +875,9 @@ class R26_002PfileHeader(LittleEndianStructure):
         ('end_location', c_float),
         ('pad_24', c_char * 352),
         ('series_timestamp', c_int),
-        ('pad_25', c_char * 206),
-        ('series_number', c_short),
-        ('pad_26', c_char * 138),
+        ('pad_25', c_char * 100),       # 206
+        ('series_number', c_int),       # c_short
+        ('pad_26', c_char * 242),       # 138
         ('series_description', c_char * 65),
         ('pad_27', c_char * 21),
         ('protocol', c_char * 25),
