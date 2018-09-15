@@ -532,7 +532,8 @@ class R20_007PfileHeader(LittleEndianStructure):
         ('echo_count', c_short),
         ('pad_3', c_char * 2),
         ('frame_count', c_short),
-        ('pad_4', c_char * 4),
+        ('pad_4', c_char * 2),
+        ('num_overscan', c_short),      # number of overscanned ky lines
         ('frame_size', c_ushort),
         ('pad_5', c_char * 20),
         ('acq_x_res', c_ushort),
@@ -759,7 +760,8 @@ class R26_002PfileHeader(LittleEndianStructure):
         ('echo_count', c_short),
         ('pad_3', c_char * 2),
         ('frame_count', c_short),
-        ('pad_4', c_char * 4),
+        ('pad_4', c_char * 2),
+        ('num_overscan', c_short),      # number of overscanned ky lines
         ('frame_size', c_ushort),
         ('pad_5', c_char * 20),
         ('acq_x_res', c_ushort),
