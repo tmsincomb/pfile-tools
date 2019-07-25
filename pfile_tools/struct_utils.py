@@ -43,8 +43,10 @@ def _dump_struct_rec(
             a = getattr(type(struct), name)
             dummy = ctypes.c_char*a.size
             field = dummy.from_buffer(struct, a.offset).raw
-            field = field.rstrip('\0')
-            field = field.replace('\0', '@')
+            #field = field.rstrip('\0')
+            #field = field.replace('\0', '@')
+            field = b''.join(field.split(b'\0'))
+            field = field.replace(b'\0', b'@')
         cur_prefix = "%s%s." % (prefix, name)
         field_offset = base_offset + field_meta.offset
         if isinstance(field, ctypes.Structure):
